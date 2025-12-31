@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+
+    <!-- Envelope to start -->
+    <div class="envelope-container" id="envelope">
+        <div class="envelope">
+            <div class="stamp">2026</div>
+        </div>
+        <div class="message-hint">Click to Open</div>
+    </div>
+
+    <!-- Main Content (Hidden initially) -->
+    <div class="container content-hidden" id="mainContent">
+        <div class="content">
+            <h2 class="subtitle">Welcome to the Future</h2>
+            <h1 class="title" id="title">
+                <span>2</span><span>0</span><span>2</span><span>6</span>
+            </h1>
+            <p class="greeting">Happy New Year</p>
+            <p class="instruction">Click anywhere to start the celebration!</p>
+            <div id="musicControl" class="music-control">Music: OFF</div>
+        </div>
+    </div>
+
+    <div class="footer">By Mahesh Chander</div>
+
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+        <source src="music.ogg" type="audio/ogg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

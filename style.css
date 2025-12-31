@@ -1,0 +1,441 @@
+:root {
+    --primary-color: #00f2ff;
+    --secondary-color: #ff0055;
+    --text-color: #ffffff;
+    --bg-color: #050510;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+#canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 50px rgba(0, 242, 255, 0.1);
+    animation: float 6s ease-in-out infinite;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeInDown 1s ease-out forwards 0.5s;
+}
+
+/* Improved Title Animation */
+.title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 8rem;
+    line-height: 1;
+    font-weight: 900;
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    perspective: 1000px;
+    position: relative;
+}
+
+.title span {
+    display: inline-block;
+    background: linear-gradient(to bottom, #fff, #e0e0e0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    transform: rotateX(90deg);
+    animation: flipIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+        floatTitle 4s ease-in-out infinite;
+}
+
+.title span:nth-child(1) {
+    animation-delay: 1s, 2s;
+}
+
+.title span:nth-child(2) {
+    animation-delay: 1.2s, 2.2s;
+    color: var(--secondary-color);
+    -webkit-text-fill-color: var(--secondary-color);
+    text-shadow: 0 0 30px var(--secondary-color), 0 0 60px var(--secondary-color);
+}
+
+.title span:nth-child(3) {
+    animation-delay: 1.4s, 2.4s;
+}
+
+.title span:nth-child(4) {
+    animation-delay: 1.6s, 2.6s;
+    color: var(--primary-color);
+    -webkit-text-fill-color: var(--primary-color);
+    text-shadow: 0 0 30px var(--primary-color), 0 0 60px var(--primary-color);
+}
+
+/* Glitch Effect on Hover or Interval */
+.title:hover span {
+    animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+    color: #fff;
+}
+
+@keyframes floatTitle {
+
+    0%,
+    100% {
+        transform: translateY(0) rotateX(0deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotateX(5deg);
+    }
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(-2px, -2px);
+    }
+
+    60% {
+        transform: translate(2px, 2px);
+    }
+
+    80% {
+        transform: translate(2px, -2px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+.greeting {
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    opacity: 0;
+    background: linear-gradient(90deg, var(--primary-color), #fff, var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: fadeInUp 1s ease-out forwards 2s, shine 3s linear infinite;
+}
+
+.music-control {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: #aaa;
+    cursor: pointer;
+    border: 1px solid #333;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.music-control:hover {
+    background: var(--primary-color);
+    color: #000;
+    box-shadow: 0 0 15px var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.instruction {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards 3s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes flipIn {
+    from {
+        opacity: 0;
+        transform: rotateX(90deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotateX(0deg);
+    }
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .title {
+        font-size: 3.5rem;
+        /* Smaller for mobile */
+        flex-wrap: wrap;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+    }
+
+    .greeting {
+        font-size: 1.2rem;
+    }
+
+    .instruction {
+        font-size: 0.8rem;
+    }
+
+    .envelope {
+        width: 250px;
+        height: 160px;
+    }
+
+    .envelope::before {
+        border-left-width: 125px;
+        border-right-width: 125px;
+        border-top-width: 80px;
+    }
+
+    .envelope::after {
+        border-left-width: 125px;
+        border-right-width: 125px;
+        border-bottom-width: 80px;
+    }
+}
+
+/* Touch Action for better mobile experience */
+body {
+    touch-action: manipulation;
+}
+
+/* Envelope Styles */
+.envelope-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 100;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.envelope-container:hover {
+    transform: translate(-50%, -55%) scale(1.05);
+}
+
+.envelope {
+    width: 300px;
+    height: 200px;
+    background: #c0392b;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.envelope::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 100px solid #e74c3c;
+    /* Flap color */
+    transform-origin: top;
+    transition: transform 0.5s;
+    z-index: 5;
+}
+
+.envelope::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 150px solid #c0392b;
+    border-right: 150px solid #c0392b;
+    border-bottom: 100px solid #a93226;
+    border-top: 100px solid transparent;
+    z-index: 4;
+    border-radius: 0 0 10px 10px;
+}
+
+.stamp {
+    width: 80px;
+    height: 80px;
+    background: gold;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 6;
+    font-size: 3rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 2px solid #fff;
+    color: #c0392b;
+    /* Text color */
+}
+
+.message-hint {
+    position: absolute;
+    bottom: -40px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 1.2rem;
+    animation: fadeIn 2s infinite alternate;
+}
+
+/* Animation Classes */
+.envelope-open::before {
+    transform: rotateX(180deg);
+    z-index: 1;
+    /* Move flap behind */
+}
+
+.falling {
+    animation: fallDown 1.5s forwards ease-in;
+}
+
+@keyframes fallDown {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, 150vh) rotate(20deg);
+        opacity: 0;
+    }
+}
+
+/* Main content initially hidden */
+.content-hidden {
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+
+.content-visible {
+    display: block;
+    animation: fadeInContent 2s forwards;
+}
+
+@keyframes fadeInContent {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Footer */
+.footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    z-index: 10;
+}
